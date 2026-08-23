@@ -1,0 +1,988 @@
+<div class="home-page">
+
+    <!-- ======================================================
+         STICKY HEADER
+    ======================================================= -->
+
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <!-- Logo -->
+
+            <a class="brand" href="javascript:void(0)" (click)="scrollToSection('home')">
+
+                <span class="brand-grid">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+
+                <span class="brand-name">
+                    Lending<span>Club</span>
+                </span>
+
+            </a>
+
+
+            <!-- Navigation -->
+
+            <nav class="main-navigation">
+
+                <a href="#loan-options">
+                    Borrowing
+                    <span class="chevron">⌄</span>
+                </a>
+
+                <a href="#banking">
+                    Banking
+                    <span class="chevron">⌄</span>
+                </a>
+
+                <a href="#loan-options">
+                    Business
+                    <span class="chevron">⌄</span>
+                </a>
+
+                <a href="#loan-options">
+                    Investing
+                    <span class="chevron">⌄</span>
+                </a>
+
+                <a href="#resources">
+                    Resources
+                </a>
+
+                <a href="#faq">
+                    Help
+                </a>
+
+            </nav>
+
+
+            <!-- Header CTA -->
+
+            <button class="header-cta" type="button" (click)="startVerification()">
+
+                Start Verification
+
+            </button>
+
+
+            <!-- Mobile menu -->
+
+            <button class="mobile-menu" type="button" aria-label="Open menu">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ======================================================
+         HERO
+    ======================================================= -->
+
+    <section id="home" class="hero-section">
+
+        <div class="hero-background"></div>
+
+        <div class="hero-overlay"></div>
+
+
+        <div class="hero-container">
+
+            <div class="hero-content">
+
+                <div class="apr-label">
+
+                    Personal loan rates starting as low as
+                    <strong>6.53% APR</strong><sup>1</sup>
+
+                </div>
+
+
+                <h1>
+
+                    Your finances matter to you
+
+                    <br>
+
+                    <span>
+                        and that matters to us.
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Keep more of what you earn and earn more on what you
+                    <br class="desktop-only">
+                    save.<sup>2</sup>
+
+                </p>
+
+
+                <div id="loan-options" class="loan-selector">
+
+                    <h2>
+                        What are you looking for?
+                    </h2>
+
+                    <p>
+                        Check your rate. It won't impact your credit score.<sup>3</sup>
+                    </p>
+
+
+                    <div class="loan-cards">
+
+                        @for (
+                        loan of loanOptions;
+                        track loan.title
+                        ) {
+
+                        <article class="loan-card">
+
+                            @if (loan.discount) {
+
+                            <div class="discount-badge">
+                                Up to 5% APR discount<sup>4</sup>
+                            </div>
+
+                            }
+
+
+                            <div class="loan-card-icon">
+
+                                <img
+                                  [src]="loan.icon"
+                                  [alt]="loan.title"
+                                />
+                              
+                              </div>
+
+
+                            <h3>
+                                {{ loan.title }}
+                            </h3>
+
+
+                            <p>
+                                {{ loan.description }}
+                            </p>
+
+
+                            @if (loan.rate) {
+
+                            <span class="loan-rate">
+                                {{ loan.rate }}<sup>1</sup>
+                            </span>
+
+                            }
+
+
+                            <button type="button" class="outline-button card-button" (click)="checkRate(loan)">
+
+                                Check Your Rate
+
+                            </button>
+
+                        </article>
+
+                        }
+
+                    </div>
+
+
+                    <div class="hero-bottom-links">
+
+                        <button type="button">
+                            <span class="material-symbols-outlined">
+                                mail
+                            </span>
+
+                            Respond to Mail Offer
+                        </button>
+
+                        <button type="button">
+                            <span class="material-symbols-outlined">
+                                verified_user
+                            </span>
+
+                            PRIVACY &amp; SECURITY PROTECTION
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================================
+         AUTO REFINANCE
+    ======================================================= -->
+
+    <section class="content-section white-section">
+
+        <div class="two-column-container">
+
+            <div class="image-column">
+
+                <div class="image-frame auto-image">
+
+                    <img [src]="images.autoRefinance" alt="Family enjoying a car ride">
+                </div>
+
+            </div>
+
+
+            <div class="text-column">
+
+                <h2>
+                    Refinance and drive away with savings
+                </h2>
+
+                <p>
+
+                    Put more money back in your pocket by refinancing your
+                    car loan with LendingClub. There are no prepayment
+                    penalties with LendingClub auto loan refinancing, and
+                    checking your rate will not impact your credit score.
+
+                </p>
+
+
+                <button class="outline-button" type="button" (click)="learnMore('auto-refinance')">
+
+                    Learn More
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================================
+         HOW PERSONAL LOAN WORKS
+    ======================================================= -->
+
+    <section class="content-section white-section">
+
+        <div class="two-column-container reverse-mobile">
+
+            <div class="image-column phone-column">
+
+                <div class="phone-image">
+
+                    <img [src]="images.loanPhone" alt="LendingClub mobile loan application">
+                </div>
+
+            </div>
+
+
+            <div class="text-column loan-process">
+
+                <h2>
+                    How a personal loan with
+                    <br>
+                    LendingClub works
+                </h2>
+
+
+                <div class="process-item">
+
+                    <h3>
+                        Apply online in minutes
+                    </h3>
+
+                    <p>
+                        Get customized loan options based on what you tell us.
+                    </p>
+
+                </div>
+
+
+                <div class="process-item">
+
+                    <h3>
+                        Choose a loan offer
+                    </h3>
+
+                    <p>
+                        Select the rate, term, and payment options you like best.
+                    </p>
+
+                </div>
+
+
+                <div class="process-item">
+
+                    <h3>
+                        Get funded in as little as 24 hours
+                    </h3>
+
+                    <p>
+                        Once your loan is approved for funding, we'll pay your
+                        creditors directly or send the money in as little as
+                        24 hours.<sup>5</sup>
+                    </p>
+
+                </div>
+
+
+                <button class="outline-button" type="button" (click)="startVerification()">
+
+                    Start Verification
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================================
+         BANK SMARTER
+    ======================================================= -->
+
+    <section id="banking" class="bank-section">
+
+        <div class="bank-container">
+
+            <div class="bank-content">
+
+                <h2>
+                    Bank smarter with LendingClub
+                </h2>
+
+
+                <p>
+
+                    Make the most of your money with LendingClub, named
+                    2024's Best Online Bank by GOBankingRates. Our
+                    award-winning checking, savings, and loan products are
+                    designed to help our members achieve their financial goals.
+
+                </p>
+
+
+                <button class="outline-button" type="button" (click)="learnMore('banking')">
+
+                    Learn More
+
+                </button>
+
+            </div>
+
+
+            <div class="awards">
+
+                <div class="award-card">
+                    Best Personal
+                    <br>
+                    Loan
+                </div>
+
+                <div class="award-circle">
+                    <strong>BEST OF</strong>
+                    <span>FINANCEBUZZ</span>
+                    <small>2026</small>
+                </div>
+
+                <div class="award-shield">
+                    <strong>Bankrate</strong>
+                    <span>★★★★★</span>
+                    <small>5.0 SAVINGS</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================================
+         MOBILE APP
+    ======================================================= -->
+
+    <section class="app-section">
+
+        <div class="app-container">
+
+            <div class="app-image-wrapper">
+
+                <div class="app-blue-box"></div>
+
+                <img [src]="images.mobileApp" alt="LendingClub mobile application">
+
+            </div>
+
+
+            <div class="app-content">
+
+                <h2>
+                    Your membership gets better in the
+                    <br>
+                    app
+                </h2>
+
+
+                <p class="app-description">
+                    Make the smartest money move of the day.
+                </p>
+
+
+                <p>
+                    Download the LendingClub app now.<sup>6</sup>
+                </p>
+
+
+                <div class="store-buttons">
+
+                    <a href="#">
+                        <img [src]="images.appStore" alt="Download on the App Store">
+                    </a>
+
+                    <a href="#">
+                        <img [src]="images.googlePlay" alt="Get it on Google Play">
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================================
+         TESTIMONIAL
+    ======================================================= -->
+
+    <section class="testimonial-section">
+
+        <div class="testimonial-container">
+
+            <h2>
+                Join over 5 million members
+            </h2>
+
+
+            <div class="testimonial-content">
+
+                <div class="testimonial-text">
+
+                    <blockquote>
+
+                        "Amazing how efficient and quickly the process was.
+                        If you are looking for superior service this company
+                        deserves a gold star. Absolutely recommend doing
+                        business here!"<sup>7</sup>
+
+                    </blockquote>
+
+
+                    <div class="testimonial-author">
+                        — Amanda W.
+                    </div>
+
+
+                    <a href="#" class="review-link">
+
+                        Read More Reviews
+
+                    </a>
+
+
+                    <div class="statistics">
+
+                        <div class="stat">
+
+                            <div class="stat-icon">
+                                $
+                            </div>
+
+                            <strong>
+                                $100 Billion+
+                            </strong>
+
+                            <span>
+                                Borrowed
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <div class="stat-icon person">
+                                ●
+                            </div>
+
+                            <strong>
+                                5 Million+
+                            </strong>
+
+                            <span>
+                                Members
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat trustpilot">
+
+                            <strong>
+                                ★ Trustpilot
+                            </strong>
+
+                            <span class="stars">
+                                ★★★★★
+                            </span>
+
+                            <span>
+                                10K+ Reviews
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="testimonial-image">
+
+                    <div class="orange-background"></div>
+
+                    <img [src]="images.testimonialPerson" alt="LendingClub member">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================================
+         FAQ
+    ======================================================= -->
+
+    <section id="faq" class="faq-section">
+
+        <div class="faq-container">
+
+            <div class="faq-intro">
+
+                <h2>
+                    Questions?
+                    <br>
+                    We've Got Answers
+                </h2>
+
+                <p>
+                    Can't find what you're looking for?
+                </p>
+
+            </div>
+
+
+            <div class="faq-list">
+
+                @for (
+                faq of faqs;
+                track faq.question;
+                let i = $index
+                ) {
+
+                <div class="faq-item" [class.open]="faq.open">
+
+                    <button type="button" class="faq-question" (click)="toggleFaq(i)">
+
+                        <span>
+                            {{ faq.question }}
+                        </span>
+
+                        <span class="material-symbols-outlined">
+
+                            {{ faq.open ? 'remove' : 'add' }}
+
+                        </span>
+
+                    </button>
+
+
+                    @if (faq.open) {
+
+                    <div class="faq-answer">
+
+                        <p>
+                            {{ faq.answer }}
+                        </p>
+
+                    </div>
+
+                    }
+
+                </div>
+
+                }
+
+
+                <button type="button" class="outline-button help-button" (click)="visitHelpCenter()">
+
+                    Visit our Help Center
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================================
+         FOOTER
+    ======================================================= -->
+
+    <footer id="resources" class="site-footer">
+
+        <div class="footer-container">
+
+            <!-- Column 1 -->
+
+            <div class="footer-column">
+
+                <h3>
+                    WHAT WE OFFER
+                </h3>
+
+                <a>Personal Loans</a>
+                <a>Personal Banking</a>
+                <a>Auto Refinancing</a>
+                <a>Financing Solutions</a>
+                <a>Business Loans</a>
+                <a>Institutional Investing</a>
+                <a>Other Types of Loans</a>
+
+                <a class="footer-highlight">
+                    Apply for a Personal Loan ›
+                </a>
+
+                <a class="footer-highlight">
+                    Apply for a Bank Account ›
+                </a>
+
+            </div>
+
+
+            <!-- Column 2 -->
+
+            <div class="footer-column">
+
+                <h3>
+                    RESOURCES
+                </h3>
+
+                <a>Resource Center</a>
+                <a>Personal Loan Rates &amp; Fees</a>
+                <a>Member Benefits</a>
+                <a>Customer Reviews</a>
+                <a>Glossary</a>
+
+
+                <h3 class="footer-subtitle">
+                    LEGAL
+                </h3>
+
+                <a>Terms of Use</a>
+                <a>Privacy Policy</a>
+                <a>California Notice of Collection</a>
+                <a>Data Collection and Use</a>
+                <a>Accessibility</a>
+                <a>SEC Filing</a>
+
+            </div>
+
+
+            <!-- Column 3 -->
+
+            <div class="footer-column">
+
+                <h3>
+                    ABOUT US
+                </h3>
+
+                <a>CRA Public File</a>
+                <a>Company</a>
+                <a>Leadership</a>
+                <a>Careers</a>
+                <a>Media Center</a>
+                <a>Corporate Governance</a>
+                <a>Investor Relations</a>
+                <a>Contact</a>
+
+            </div>
+
+
+            <!-- Column 4 -->
+
+            <div class="footer-column">
+
+                <h3>
+                    ACCOUNT
+                </h3>
+
+                <a>Sign In</a>
+                <a>Mobile App</a>
+                <a>Help</a>
+                <a>Your Privacy Choices</a>
+
+
+                <div class="powered-by">
+
+                    <strong>
+                        POWERED BY THE LC™
+                        <br>
+                        PLATFORM
+                    </strong>
+
+
+                    <div class="lc-logo">
+
+                        <span class="lc-grid">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+
+                        LC
+
+                    </div>
+
+
+                    <div class="footer-store-buttons">
+
+                        <img [src]="images.appStore" alt="App Store">
+
+                        <img [src]="images.googlePlay" alt="Google Play">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer bottom -->
+
+        <div class="footer-bottom">
+
+            <div class="footer-brand-area">
+
+                <div class="footer-brand">
+
+                    <span class="brand-grid">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <span class="brand-name">
+                        Lending<span>Club</span>
+                    </span>
+
+                </div>
+
+
+                <p>
+                    88 Kearny Street, Suite 600
+                    <br>
+                    San Francisco, CA 94108
+                </p>
+
+            </div>
+
+
+            <div class="accessibility-message">
+
+                If you have special access needs and are having
+                problems accessing this website, please call
+                <strong>(458) 230-4428</strong>
+
+            </div>
+
+
+            <div class="footer-badges">
+
+                <img [src]="images.equalHousing" alt="Equal Housing Lender">
+
+                <img [src]="images.bbb" alt="BBB Accredited Business">
+
+                <img [src]="images.verisign" alt="VeriSign Secured">
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+           LEGAL
+      =================================================== -->
+
+        <div class="legal-section">
+
+            <p>
+                Credit eligibility is not guaranteed. APR and other
+                credit terms depend upon credit score and other key
+                financing characteristics, including but not limited to
+                the amount financed, loan term length, and credit usage
+                and history.
+            </p>
+
+
+            <p>
+                <strong>1.</strong>
+                For Personal Loans, APR ranges from 6.53% APR to
+                35.99% APR and origination/processing fee ranges from
+                0.00% to 8.00% of the loan amount. APRs and
+                origination/processing fees are determined at the time
+                of application.
+            </p>
+
+
+            <p>
+                <strong>2.</strong>
+                Savings are not guaranteed and depend upon various
+                factors, including but not limited to interest rates,
+                fees, term length, and making payments as agreed.
+            </p>
+
+
+            <p>
+                <strong>3.</strong>
+                Checking a rate through us generates a soft inquiry on
+                a person's credit report, which does not impact that
+                person's credit score.
+            </p>
+
+
+            <p>
+                <strong>4.</strong>
+                The APR discounted rate is a discount that some
+                customers may receive for taking out a loan to pay down
+                existing qualifying debt paid directly by LendingClub.
+            </p>
+
+
+            <p>
+                <strong>5.</strong>
+                Between July 2025 and December 2025, 58% of LendingClub
+                Personal Loans that were approved for funding on a given
+                business day were disbursed within 24 hours.
+            </p>
+
+
+            <p>
+                <strong>6.</strong>
+                Standard data and message rates may apply to Mobile
+                Banking services.
+            </p>
+
+
+            <p>
+                <strong>7.</strong>
+                Based on reviews collected by Trustpilot. This is one
+                person's experience. Individual results may vary.
+            </p>
+
+
+            <p>
+                A representative example of payment terms for a Personal
+                Loan is as follows: a borrower receives a loan of
+                $19,658 for a term of 36 months, with an interest rate
+                of 13.24% and a 6.00% origination fee of $1,179 for an
+                APR of 17.63%. In this example, the borrower will receive
+                $18,479 and will make 36 monthly payments of $665.
+            </p>
+
+
+            <p>
+                Loan amounts range from $1,000 to $60,000 and loan term
+                lengths range from 24 months to 84 months. Some amounts,
+                rates, and term lengths may be unavailable in certain
+                states.
+            </p>
+
+
+            <p>
+                Unless otherwise specified, all credit and deposit
+                products are provided by LendingClub Bank, N.A., Member
+                FDIC, Equal Housing Lender.
+            </p>
+
+
+            <p>
+                "LendingClub," the "LC" symbol, "TopUp," and "DebtIQ"
+                are trademarks of LendingClub Bank.
+            </p>
+
+
+            <p class="copyright">
+                © 2026 LendingClub Bank. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+</div>

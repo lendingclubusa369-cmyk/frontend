@@ -1,0 +1,1956 @@
+/* ============================================================
+   VARIABLES
+============================================================ */
+
+$navy: #123f66;
+$dark-navy: #103c61;
+$blue: #0088cf;
+$light-blue: #66c9f3;
+$orange: #f4512b;
+
+$text: #506d87;
+$light-bg: #f2f7fb;
+$card-bg: #edf3f8;
+$white: #ffffff;
+$black: #000000;
+
+$max-width: 1400px;
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+a {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.home-page {
+  width: 100%;
+  overflow-x: hidden;
+
+  color: $navy;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+/* ============================================================
+   STICKY HEADER
+============================================================ */
+
+.site-header {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 9999;
+
+  width: 100%;
+
+  height: 76px;
+
+  background: rgba(255, 255, 255, 0.98);
+
+  border-bottom: 1px solid #e7e7e7;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04);
+
+  backdrop-filter: blur(10px);
+}
+
+
+.header-container {
+  width: min(100% - 120px, 1400px);
+
+  height: 100%;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  text-decoration: none;
+
+  color: $navy;
+
+  flex-shrink: 0;
+}
+
+
+.brand-grid {
+  width: 29px;
+
+  height: 29px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 3px;
+}
+
+
+.brand-grid span {
+  display: block;
+
+  background: $orange;
+}
+
+
+.brand-name {
+  font-size: 32px;
+
+  font-weight: 700;
+
+  letter-spacing: -1.8px;
+}
+
+
+.brand-name span {
+  color: $navy;
+}
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+.main-navigation {
+  margin-left: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 32px;
+}
+
+
+.main-navigation a {
+  color: $navy;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+}
+
+
+.main-navigation a:hover {
+  color: $blue;
+}
+
+
+.chevron {
+  font-size: 15px;
+
+  margin-left: 3px;
+}
+
+
+/* ============================================================
+   HEADER CTA
+============================================================ */
+
+.header-cta {
+  margin-left: 45px;
+
+  height: 42px;
+
+  padding: 0 26px;
+
+  border-radius: 11px;
+
+  border: 1.5px solid $orange;
+
+  background: $white;
+
+  color: $orange;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  transition: all 0.2s ease;
+}
+
+
+.header-cta:hover {
+  background: $orange;
+
+  color: $white;
+}
+
+
+/* ============================================================
+   MOBILE MENU
+============================================================ */
+
+.mobile-menu {
+  display: none;
+
+  margin-left: auto;
+
+  width: 40px;
+
+  height: 40px;
+
+  border: 0;
+
+  background: transparent;
+}
+
+
+.mobile-menu span {
+  display: block;
+
+  width: 24px;
+
+  height: 2px;
+
+  margin: 5px auto;
+
+  background: $navy;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero-section {
+  position: relative;
+
+  min-height: 680px;
+
+  color: $white;
+
+  overflow: hidden;
+}
+
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+  
+    background-image:
+      url('../../../assets/images/LC_Hero_Image_lg.jpg_w_3840_q_75_1771652329889-DO6BEfn8.jpeg');
+  
+    background-size: cover;
+    background-position: center;
+  }
+
+
+.hero-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.96) 0%,
+      rgba(0, 0, 0, 0.92) 28%,
+      rgba(0, 0, 0, 0.68) 50%,
+      rgba(0, 0, 0, 0.18) 100%
+    );
+}
+
+
+.hero-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(100% - 120px, 1400px);
+
+  margin: 0 auto;
+
+  padding-top: 38px;
+
+  padding-bottom: 30px;
+}
+
+
+.apr-label {
+  color: $light-blue;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
+
+  margin-bottom: 18px;
+}
+
+
+.apr-label strong {
+  color: $white;
+}
+
+
+.apr-label sup {
+  font-size: 8px;
+}
+
+
+.hero-content h1 {
+  margin: 0;
+
+  max-width: 850px;
+
+  font-size: clamp(48px, 5vw, 72px);
+
+  line-height: 0.98;
+
+  letter-spacing: -3px;
+
+  font-weight: 800;
+}
+
+
+.hero-content h1 span {
+  color: $light-blue;
+}
+
+
+.hero-description {
+  margin-top: 25px;
+
+  margin-bottom: 38px;
+
+  color: #b5c7d4;
+
+  font-size: 18px;
+
+  line-height: 1.55;
+}
+
+
+/* ============================================================
+   LOAN SELECTOR
+============================================================ */
+
+.loan-selector h2 {
+  margin: 0;
+
+  font-size: 25px;
+
+  color: $white;
+}
+
+
+.loan-selector > p {
+  margin: 6px 0 29px;
+
+  color: #91adbe;
+
+  font-size: 15px;
+}
+
+
+/* ============================================================
+   LOAN CARDS
+============================================================ */
+
+.loan-cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 17px;
+}
+
+
+.loan-card {
+  position: relative;
+
+  min-height: 246px;
+
+  padding: 23px;
+
+  border-radius: 17px;
+
+  background: $card-bg;
+
+  color: $navy;
+
+  display: flex;
+
+  flex-direction: column;
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.16);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.loan-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.22);
+}
+
+
+.discount-badge {
+  position: absolute;
+
+  right: 10px;
+
+  top: -16px;
+
+  padding: 5px 13px;
+
+  border-radius: 15px;
+
+  background: #c8f3e2;
+
+  color: #087b5c;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+
+.loan-card-icon {
+  height: 40px;
+
+  margin-bottom: 13px;
+
+  color: $navy;
+}
+
+
+.loan-card-icon img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    display: block;
+  }
+
+.loan-card h3 {
+  margin: 0 0 9px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: $navy;
+}
+
+
+.loan-card p {
+  flex: 1;
+
+  margin: 0;
+
+  color: #6a879f;
+
+  font-size: 12.5px;
+
+  line-height: 1.45;
+}
+
+
+.loan-rate {
+  margin-top: 10px;
+
+  margin-bottom: 8px;
+
+  color: $blue;
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   BUTTON
+============================================================ */
+
+.outline-button {
+  min-width: 180px;
+
+  height: 48px;
+
+  padding: 0 25px;
+
+  border-radius: 9px;
+
+  border: 1.5px solid $navy;
+
+  background: transparent;
+
+  color: $navy;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  transition: all 0.2s ease;
+}
+
+
+.outline-button:hover {
+  background: $navy;
+
+  color: $white;
+}
+
+
+.card-button {
+  width: 100%;
+
+  min-width: 0;
+
+  height: 37px;
+
+  border-color: $blue;
+
+  color: $blue;
+
+  font-size: 13px;
+}
+
+
+.card-button:hover {
+  background: $blue;
+
+  color: $white;
+}
+
+
+/* ============================================================
+   HERO BOTTOM LINKS
+============================================================ */
+
+.hero-bottom-links {
+  display: flex;
+
+  gap: 30px;
+
+  margin-top: 30px;
+}
+
+
+.hero-bottom-links button {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #86a5b7;
+
+  font-size: 11px;
+}
+
+
+.hero-bottom-links .material-symbols-outlined {
+  font-size: 16px;
+}
+
+
+/* ============================================================
+   GENERAL SECTIONS
+============================================================ */
+
+.content-section {
+  padding: 85px 0;
+}
+
+
+.white-section {
+  background: $white;
+}
+
+
+.two-column-container {
+  width: min(100% - 120px, 1400px);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  align-items: center;
+
+  gap: 100px;
+}
+
+
+.image-column {
+  width: 100%;
+}
+
+
+.image-frame {
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 17px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.10);
+}
+
+
+.image-frame img {
+  display: block;
+
+  width: 100%;
+
+  height: 395px;
+
+  object-fit: cover;
+}
+
+
+.text-column {
+  max-width: 600px;
+}
+
+
+.text-column h2 {
+  margin: 0 0 22px;
+
+  color: $navy;
+
+  font-size: 38px;
+
+  line-height: 1.1;
+
+  letter-spacing: -1.3px;
+}
+
+
+.text-column > p {
+  margin: 0 0 35px;
+
+  color: $text;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   LOAN PROCESS
+============================================================ */
+
+.phone-column {
+  display: flex;
+
+  justify-content: center;
+}
+
+
+.phone-image {
+  height: 450px;
+
+  overflow: hidden;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+}
+
+
+.phone-image img {
+  max-width: 330px;
+
+  width: 100%;
+
+  height: auto;
+}
+
+
+.process-item {
+  margin-bottom: 24px;
+}
+
+
+.process-item h3 {
+  margin: 0 0 7px;
+
+  color: $navy;
+
+  font-size: 20px;
+}
+
+
+.process-item p {
+  margin: 0;
+
+  color: $text;
+
+  font-size: 16px;
+
+  line-height: 1.55;
+}
+
+
+/* ============================================================
+   BANKING SECTION
+============================================================ */
+
+.bank-section {
+  padding: 75px 0;
+
+  background: $white;
+}
+
+
+.bank-container {
+  width: min(100% - 120px, 1400px);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1.4fr 1fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+
+.bank-content h2 {
+  margin: 0 0 20px;
+
+  color: $navy;
+
+  font-size: 36px;
+
+  letter-spacing: -1px;
+}
+
+
+.bank-content p {
+  max-width: 700px;
+
+  margin: 0 0 28px;
+
+  color: $text;
+
+  font-size: 17px;
+
+  line-height: 1.65;
+}
+
+
+.awards {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 22px;
+}
+
+
+.award-card {
+  width: 85px;
+
+  height: 145px;
+
+  padding: 15px 8px;
+
+  background: #2d9b58;
+
+  color: $white;
+
+  text-align: center;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.award-circle {
+  width: 130px;
+
+  height: 130px;
+
+  border: 9px solid #174d94;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  color: #174d94;
+}
+
+
+.award-circle strong {
+  font-size: 11px;
+}
+
+
+.award-circle span {
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+.award-circle small {
+  font-size: 14px;
+}
+
+
+.award-shield {
+  width: 100px;
+
+  height: 145px;
+
+  padding-top: 30px;
+
+  background: #112c61;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 78%,
+    50% 100%,
+    0 78%
+  );
+
+  color: $white;
+
+  text-align: center;
+}
+
+
+.award-shield strong {
+  display: block;
+
+  font-size: 15px;
+}
+
+
+.award-shield span {
+  display: block;
+
+  margin-top: 10px;
+
+  color: #ffd449;
+}
+
+
+.award-shield small {
+  font-size: 8px;
+}
+
+
+/* ============================================================
+   APP SECTION
+============================================================ */
+
+.app-section {
+  padding: 90px 0;
+
+  background: #edf5fc;
+}
+
+
+.app-container {
+  width: min(100% - 120px, 1200px);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  align-items: center;
+
+  gap: 100px;
+}
+
+
+.app-image-wrapper {
+  position: relative;
+
+  height: 420px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-end;
+}
+
+
+.app-blue-box {
+  position: absolute;
+
+  width: 400px;
+
+  height: 300px;
+
+  bottom: 0;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: #78cbe1;
+}
+
+
+.app-image-wrapper img {
+  position: relative;
+
+  z-index: 2;
+
+  max-height: 470px;
+
+  max-width: 300px;
+
+  object-fit: contain;
+}
+
+
+.app-content h2 {
+  margin: 0 0 18px;
+
+  color: $navy;
+
+  font-size: 38px;
+
+  line-height: 1.12;
+}
+
+
+.app-content p {
+  color: $text;
+
+  font-size: 17px;
+
+  line-height: 1.6;
+}
+
+
+.app-description {
+  margin-bottom: 12px;
+}
+
+
+.store-buttons {
+  display: flex;
+
+  gap: 15px;
+
+  margin-top: 25px;
+}
+
+
+.store-buttons img {
+  width: 145px;
+
+  height: auto;
+}
+
+
+/* ============================================================
+   TESTIMONIAL
+============================================================ */
+
+.testimonial-section {
+  padding: 85px 0;
+
+  background: $white;
+}
+
+
+.testimonial-container {
+  width: min(100% - 120px, 1400px);
+
+  margin: 0 auto;
+}
+
+
+.testimonial-container > h2 {
+  margin: 0 0 55px;
+
+  text-align: center;
+
+  color: $navy;
+
+  font-size: 34px;
+}
+
+
+.testimonial-content {
+  display: grid;
+
+  grid-template-columns:
+    1.2fr 0.8fr;
+
+  align-items: center;
+
+  gap: 80px;
+}
+
+
+.testimonial-text blockquote {
+  margin: 0;
+
+  max-width: 680px;
+
+  color: $navy;
+
+  font-size: 26px;
+
+  line-height: 1.4;
+}
+
+
+.testimonial-author {
+  margin-top: 25px;
+
+  color: #566a7c;
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+
+.review-link {
+  display: inline-block;
+
+  margin-top: 30px;
+
+  color: $blue;
+
+  font-weight: 600;
+}
+
+
+.statistics {
+  display: flex;
+
+  margin-top: 45px;
+}
+
+
+.stat {
+  min-width: 150px;
+
+  padding: 0 28px;
+
+  border-right: 1px solid #d7dfe6;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+
+.stat:first-child {
+  padding-left: 0;
+}
+
+
+.stat:last-child {
+  border-right: 0;
+}
+
+
+.stat-icon {
+  width: 42px;
+
+  height: 42px;
+
+  margin-bottom: 10px;
+
+  border-radius: 50%;
+
+  background: #9acd58;
+
+  color: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 24px;
+
+  font-weight: 700;
+}
+
+
+.stat-icon.person {
+  background: #a9d8ea;
+}
+
+
+.stat strong {
+  color: $navy;
+
+  font-size: 13px;
+}
+
+
+.stat span {
+  margin-top: 3px;
+
+  color: #698197;
+
+  font-size: 11px;
+}
+
+
+.trustpilot strong {
+  color: #111111;
+}
+
+
+.stars {
+  color: #00a86b !important;
+
+  font-size: 12px !important;
+
+  margin-top: 5px;
+}
+
+
+.testimonial-image {
+  position: relative;
+
+  min-height: 450px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: center;
+}
+
+
+.orange-background {
+  position: absolute;
+
+  width: 90%;
+
+  height: 80%;
+
+  bottom: 0;
+
+  background: #f34328;
+}
+
+
+.testimonial-image img {
+  position: relative;
+
+  z-index: 2;
+
+  max-height: 520px;
+
+  max-width: 100%;
+
+  object-fit: contain;
+}
+
+
+/* ============================================================
+   FAQ
+============================================================ */
+
+.faq-section {
+  padding: 85px 0;
+
+  background: #f4f7fb;
+}
+
+
+.faq-container {
+  width: min(100% - 120px, 1200px);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    0.7fr 1.3fr;
+
+  gap: 90px;
+}
+
+
+.faq-intro h2 {
+  margin: 0;
+
+  color: $navy;
+
+  font-size: 36px;
+
+  line-height: 1.15;
+}
+
+
+.faq-intro p {
+  color: #728399;
+
+  font-size: 16px;
+}
+
+
+.faq-item {
+  border-bottom: 1px solid #d9dfe5;
+}
+
+
+.faq-question {
+  width: 100%;
+
+  min-height: 66px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: $navy;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  text-align: left;
+}
+
+
+.faq-question .material-symbols-outlined {
+  color: $blue;
+
+  font-size: 21px;
+}
+
+
+.faq-answer {
+  padding: 0 40px 20px 0;
+}
+
+
+.faq-answer p {
+  margin: 0;
+
+  color: $text;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+.help-button {
+  margin-top: 25px;
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.site-footer {
+  background: $white;
+
+  color: $navy;
+}
+
+
+.footer-container {
+  width: min(100% - 120px, 1400px);
+
+  margin: 0 auto;
+
+  padding: 70px 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 50px;
+}
+
+
+.footer-column {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+.footer-column h3 {
+  margin: 0 0 25px;
+
+  color: $navy;
+
+  font-size: 16px;
+
+  letter-spacing: 0.5px;
+}
+
+
+.footer-column a {
+  margin-bottom: 17px;
+
+  color: $blue;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+
+.footer-highlight {
+  color: $orange !important;
+
+  font-weight: 600;
+}
+
+
+.footer-subtitle {
+  margin-top: 30px !important;
+}
+
+
+.powered-by {
+  margin-top: 35px;
+}
+
+
+.powered-by strong {
+  font-size: 13px;
+
+  letter-spacing: 0.4px;
+}
+
+
+.lc-logo {
+  margin: 22px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: $navy;
+
+  font-size: 35px;
+
+  font-weight: 700;
+}
+
+
+.lc-grid {
+  width: 27px;
+
+  height: 27px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 3px;
+}
+
+
+.lc-grid i {
+  background: $orange;
+}
+
+
+.footer-store-buttons {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+
+.footer-store-buttons img {
+  width: 135px;
+
+  height: auto;
+}
+
+
+/* ============================================================
+   FOOTER BOTTOM
+============================================================ */
+
+.footer-bottom {
+  width: min(100% - 120px, 1400px);
+
+  margin: 0 auto;
+
+  padding: 45px 0;
+
+  border-top: 1px solid #e4e8ec;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr 1.4fr;
+
+  gap: 60px;
+
+  align-items: center;
+}
+
+
+.footer-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+
+.footer-brand .brand-name {
+  font-size: 34px;
+}
+
+
+.footer-brand-area p {
+  margin-top: 25px;
+
+  color: #778596;
+
+  line-height: 1.6;
+}
+
+
+.accessibility-message {
+  color: #778596;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+.accessibility-message strong {
+  color: $blue;
+}
+
+
+.footer-badges {
+  display: flex;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  gap: 35px;
+}
+
+
+.footer-badges img {
+  height: 42px;
+
+  width: auto;
+}
+
+
+/* ============================================================
+   LEGAL
+============================================================ */
+
+.legal-section {
+  width: min(100% - 120px, 1400px);
+
+  margin: 0 auto;
+
+  padding: 35px 0 50px;
+
+  border-top: 1px solid #e5e9ed;
+
+  color: #596a7d;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+}
+
+
+.legal-section p {
+  margin: 0 0 17px;
+}
+
+
+.copyright {
+  margin-top: 30px !important;
+
+  color: #7b8794;
+}
+
+
+/* ============================================================
+   RESPONSIVE - 1200
+============================================================ */
+
+@media (max-width: 1200px) {
+
+  .header-container,
+  .hero-container,
+  .two-column-container,
+  .bank-container,
+  .app-container,
+  .testimonial-container,
+  .faq-container,
+  .footer-container,
+  .footer-bottom,
+  .legal-section {
+    width: min(100% - 70px, 1100px);
+  }
+
+
+  .main-navigation {
+    gap: 18px;
+  }
+
+
+  .header-cta {
+    margin-left: 25px;
+  }
+
+
+  .loan-cards {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .hero-section {
+    min-height: auto;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE - 900
+============================================================ */
+
+@media (max-width: 900px) {
+
+  .site-header {
+    height: 70px;
+  }
+
+
+  .main-navigation {
+    display: none;
+  }
+
+
+  .header-cta {
+    margin-left: auto;
+
+    margin-right: 15px;
+  }
+
+
+  .mobile-menu {
+    display: block;
+  }
+
+
+  .hero-content h1 {
+    font-size: 52px;
+  }
+
+
+  .two-column-container,
+  .bank-container,
+  .app-container,
+  .testimonial-content,
+  .faq-container,
+  .footer-bottom {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+
+  .text-column {
+    max-width: none;
+  }
+
+
+  .awards {
+    justify-content: flex-start;
+  }
+
+
+  .testimonial-image {
+    max-width: 500px;
+
+    margin: 0 auto;
+  }
+
+
+  .footer-container {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .footer-badges {
+    justify-content: flex-start;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE - 600
+============================================================ */
+
+@media (max-width: 600px) {
+
+  .header-container,
+  .hero-container,
+  .two-column-container,
+  .bank-container,
+  .app-container,
+  .testimonial-container,
+  .faq-container,
+  .footer-container,
+  .footer-bottom,
+  .legal-section {
+    width: calc(100% - 40px);
+  }
+
+
+  .brand-name {
+    font-size: 27px;
+  }
+
+
+  .brand-grid {
+    width: 25px;
+
+    height: 25px;
+  }
+
+
+  .header-cta {
+    padding: 0 15px;
+
+    font-size: 13px;
+  }
+
+
+  .hero-container {
+    padding-top: 30px;
+  }
+
+
+  .hero-content h1 {
+    font-size: 43px;
+
+    letter-spacing: -2px;
+  }
+
+
+  .desktop-only {
+    display: none;
+  }
+
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+
+  .loan-cards {
+    grid-template-columns: 1fr;
+  }
+
+
+  .loan-card {
+    min-height: 260px;
+  }
+
+
+  .hero-bottom-links {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+
+  .content-section,
+  .bank-section,
+  .app-section,
+  .testimonial-section,
+  .faq-section {
+    padding: 60px 0;
+  }
+
+
+  .text-column h2,
+  .bank-content h2,
+  .app-content h2 {
+    font-size: 31px;
+  }
+
+
+  .image-frame img {
+    height: 280px;
+  }
+
+
+  .app-image-wrapper {
+    height: 350px;
+  }
+
+
+  .app-blue-box {
+    width: 280px;
+
+    height: 250px;
+  }
+
+
+  .testimonial-text blockquote {
+    font-size: 21px;
+  }
+
+
+  .statistics {
+    flex-wrap: wrap;
+
+    gap: 20px;
+  }
+
+
+  .stat {
+    min-width: 100px;
+
+    padding: 0 15px;
+  }
+
+
+  .footer-container {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+
+  .footer-badges {
+    flex-wrap: wrap;
+  }
+
+
+  .awards {
+    transform: scale(0.8);
+
+    transform-origin: left;
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL DEVICES
+============================================================ */
+
+@media (max-width: 400px) {
+
+  .header-cta {
+    display: none;
+  }
+
+
+  .hero-content h1 {
+    font-size: 37px;
+  }
+
+
+  .apr-label {
+    font-size: 14px;
+  }
+
+
+  .loan-card {
+    padding: 20px;
+  }
+
+
+  .store-buttons {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+}
+
+
+/* ============================================================
+   VERIFY FORM SPACING FIX
+============================================================ */
+
+::ng-deep .verify-form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 32px !important;
+}
+
+::ng-deep .verify-page .form-card {
+  padding: 28px 32px 32px !important;
+}
+
+::ng-deep .verify-page .form-grid {
+  display: grid !important;
+  column-gap: 20px !important;
+  row-gap: 36px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Space between separate rows */
+::ng-deep .verify-page .form-card > .form-grid + .form-grid {
+  margin-top: 28px !important;
+}
+
+/* Label to input spacing */
+::ng-deep .verify-page .form-field label {
+  margin-bottom: 10px !important;
+}
+
+/* ============================================================
+   FINAL FORM SPACING FIX
+============================================================ */
+
+/* Prevent inputs from exceeding their grid columns */
+.verify-page *,
+.verify-page *::before,
+.verify-page *::after {
+  box-sizing: border-box;
+}
+
+/* Space between columns and rows */
+.verify-page .form-grid {
+  column-gap: 16px !important;
+  row-gap: 20px !important;
+}
+
+/* Make sure inputs/selects stay inside their grid columns */
+.verify-page .form-field input,
+.verify-page .form-field select {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Space between separate rows of fields */
+.verify-page .form-card .form-grid + .form-grid {
+  margin-top: 20px !important;
+}
+
+/* Keep the loan amount separated from the row above */
+.verify-page .form-grid.one-col {
+  margin-top: 20px !important;
+}
