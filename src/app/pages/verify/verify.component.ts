@@ -35,18 +35,24 @@ interface VerificationForm extends VerificationPayload {}
   styleUrl: './verify.component.scss'
 })
 export class VerifyComponent {
+
+
+private toastTimeout?: ReturnType<typeof setTimeout>;
   private readonly http = inject(HttpClient);
 
   private readonly apiUrl =
     'https://backend-production-3ce57.up.railway.app/api/Verifications';
 
-  submitted = false;
-  isSubmitting = false;
+    submitted = false;
+    isSubmitting = false;
+    showPassword = false;
+  
+    successMessage = '';
+    serverError = '';
+  
+    toastMessage = '';
+    toastType: 'success' | 'error' = 'success';
 
-  showPassword = false;
-
-  successMessage = '';
-  serverError = '';
 
   form: VerificationForm = {
     firstName: '',
@@ -133,6 +139,22 @@ export class VerifyComponent {
     this.showPassword = !this.showPassword;
   }
 
+  private showToast(
+    message: string,
+    type: 'success' | 'error'
+  ): void {
+    this.toastMessage = message;
+    this.toastType = type;
+  
+    if (this.toastTimeout) {
+      clearTimeout(this.toastTimeout);
+    }
+  
+    this.toastTimeout = setTimeout(() => {
+      this.toastMessage = '';
+    }, 4000);
+  }
+
   formatDateOfBirth(event: Event): void {
     const input = event.target as HTMLInputElement;
   
@@ -170,6 +192,11 @@ export class VerifyComponent {
 
     // Stop if frontend validation fails
     if (formRef.invalid) {
+      this.showToast(
+        'Please complete all required fields correctly.',
+        'error'
+      );
+    
       return;
     }
 
@@ -204,7 +231,10 @@ export class VerifyComponent {
           'Verification submitted successfully.';
 
         this.serverError = '';
-
+        this.showToast(
+          'Verification submitted successfully.',
+          'success'
+        );
         console.log(
           'Verification submitted:',
           response
@@ -221,21 +251,36 @@ export class VerifyComponent {
 
       error: (error: HttpErrorResponse) => {
         this.isSubmitting = false;
-
+      
         console.error(
           'Verification failed:',
           error
         );
-
+      
         if (error.status === 400) {
           this.serverError =
             this.extractValidationErrors(error);
+      
+          this.showToast(
+            this.serverError,
+            'error'
+          );
         } else if (error.status === 0) {
           this.serverError =
             'Unable to connect to the backend. Please make sure the API is running.';
+      
+          this.showToast(
+            this.serverError,
+            'error'
+          );
         } else {
           this.serverError =
             'Unable to submit verification. Please try again later.';
+      
+          this.showToast(
+            this.serverError,
+            'error'
+          );
         }
       }
     });

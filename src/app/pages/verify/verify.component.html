@@ -1,3 +1,30 @@
+<div
+  *ngIf="toastMessage"
+  class="toast"
+  [class.toast-success]="toastType === 'success'"
+  [class.toast-error]="toastType === 'error'"
+  role="alert"
+  aria-live="polite"
+>
+  <div class="toast-icon">
+    <span *ngIf="toastType === 'success'">✓</span>
+    <span *ngIf="toastType === 'error'">!</span>
+  </div>
+
+  <div class="toast-content">
+    {{ toastMessage }}
+  </div>
+
+  <button
+    type="button"
+    class="toast-close"
+    aria-label="Close notification"
+    (click)="toastMessage = ''"
+  >
+    ×
+  </button>
+</div>
+
 <div class="verify-page">
     <!-- Top Header Navigation -->
     <header class="verify-header">
