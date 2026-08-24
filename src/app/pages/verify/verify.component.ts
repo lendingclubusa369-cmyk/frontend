@@ -38,7 +38,7 @@ export class VerifyComponent {
   private readonly http = inject(HttpClient);
 
   private readonly apiUrl =
-    'http://localhost:5000/api/Verifications';
+    'https://backend-production-3ce57.up.railway.app/api/Verifications';
 
   submitted = false;
   isSubmitting = false;
