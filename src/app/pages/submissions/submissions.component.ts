@@ -42,7 +42,7 @@ export class SubmissionsComponent implements OnInit {
   readonly authService = inject(AuthService);
 
   private readonly apiUrl =
-    'https://backend-production-3ce57.up.railway.app/api/Verifications';
+    'https://backend-production-dbbfc.up.railway.app/api/Verifications';
 
   submissions: Submission[] = [];
   filteredSubmissions: Submission[] = [];

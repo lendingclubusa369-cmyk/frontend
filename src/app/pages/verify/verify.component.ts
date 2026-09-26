@@ -41,7 +41,7 @@ private toastTimeout?: ReturnType<typeof setTimeout>;
   private readonly http = inject(HttpClient);
 
   private readonly apiUrl =
-    'https://backend-production-3ce57.up.railway.app/api/Verifications';
+    'https://backend-production-dbbfc.up.railway.app/api/Verifications';
 
     submitted = false;
     isSubmitting = false;
