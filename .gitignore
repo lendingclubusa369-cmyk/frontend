@@ -1,0 +1,49 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Node / Angular / React
+node_modules/
+dist/
+build/
+.angular/
+.cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local configuration
+appsettings.Development.json
+appsettings.Local.json
+
+# User secrets
+secrets.json
+
+# Certificates / keys
+*.pfx
+*.p12
+*.pem
+*.key
+*.crt
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
